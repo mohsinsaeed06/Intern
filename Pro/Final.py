@@ -216,7 +216,7 @@ class ApplicationWindow:
 
     def __init__(self):
         self.root = tk.Tk()
-        self.root.title("Paper Studio — Document Reconstruction Engine")
+        self.root.title("Torn Document Reconstruction")
         self.root.geometry("840x640")
         self.root.configure(bg=PALETTE_BG)
         self.root.resizable(False, False)
@@ -244,7 +244,7 @@ class ApplicationWindow:
         brand.pack(fill=tk.X)
         tk.Label(
             brand,
-            text="Paper Studio",
+            text="Document Reconstruction",
             font=("Segoe UI", 16, "bold"),
             bg=PALETTE_SIDEBAR,
             fg=PALETTE_TEXT_DARK,
@@ -252,7 +252,7 @@ class ApplicationWindow:
         ).pack(fill=tk.X)
         tk.Label(
             brand,
-            text="Document Reconstruction Engine",
+            text="Document Reconstruction",
             font=("Segoe UI", 8),
             bg=PALETTE_SIDEBAR,
             fg=PALETTE_SLATE,
@@ -311,7 +311,7 @@ class ApplicationWindow:
 
         self.btn_run_stitch = tk.Button(
             controls,
-            text="🧩 Stitch Fragments",
+            text="Stitch Fragments",
             font=("Segoe UI", 9, "bold"),
             bg=PALETTE_EMERALD,
             fg="white",
@@ -330,7 +330,7 @@ class ApplicationWindow:
 
         self.btn_open_viewer = tk.Button(
             controls,
-            text="🔍 View Final Output & Inpaint ▶",
+            text="View Final Output & Inpaint",
             font=("Segoe UI", 8, "bold"),
             bg=PALETTE_PRIMARY,
             fg="white",
@@ -387,7 +387,7 @@ class ApplicationWindow:
         self.lbl_preview = tk.Label(
             self.card,
             text=(
-                "🖼️ No Document Loaded\n\nClick 'Choose Image File...' on the"
+                " No Document Loaded\n\nClick 'Choose Image File...' on the"
                 " left panel to begin."
             ),
             font=("Segoe UI", 9),
@@ -401,7 +401,7 @@ class ApplicationWindow:
 
         self.btn_prev_step = tk.Button(
             self.nav_frame,
-            text="◀ Previous Step",
+            text="Previous Step",
             font=("Segoe UI", 8, "bold"),
             bg=PALETTE_SLATE,
             fg="white",
@@ -428,7 +428,7 @@ class ApplicationWindow:
 
         self.btn_next_step = tk.Button(
             self.nav_frame,
-            text="Next Step ▶",
+            text="Next Step",
             font=("Segoe UI", 8, "bold"),
             bg=PALETTE_SLATE,
             fg="white",
@@ -485,7 +485,7 @@ class ApplicationWindow:
         self.current_step_index = len(self.step_history) - 1
         self.render_step_frame()
         self.lbl_status.config(
-            text=f"Status: ⏳ Stitching step {current_step}/{total_steps}...",
+            text=f"Status: Stitching step {current_step}/{total_steps}...",
             fg="#D97706",
         )
         self.root.update()
@@ -556,7 +556,7 @@ class ApplicationWindow:
         self.btn_run_stitch.config(state=tk.DISABLED, bg="#CBD5E1")
         self.btn_select_file.config(state=tk.DISABLED)
         self.lbl_status.config(
-            text="Status: ⏳ Executing core logic...", fg="#D97706"
+            text="Status: Executing core logic...", fg="#D97706"
         )
         self.root.update()
 
@@ -576,7 +576,7 @@ class ApplicationWindow:
         self.btn_open_viewer.pack(fill=tk.X, pady=(10, 0))
         self.lbl_status.config(
             text=(
-                "Status: ✅ Assembly Complete! Use ◀ ▶ buttons below to review"
+                "Status:  Assembly Complete! Use <> buttons below to review"
                 " all steps."
             ),
             fg=PALETTE_EMERALD,
@@ -603,7 +603,7 @@ class ResultViewer:
         self.current_display_img, self.inpainted_img = stitched_img, None
 
         self.window = tk.Toplevel()
-        self.window.title("Paper Studio — Stitched Output Viewer")
+        self.window.title("Stitched Output Viewer")
         self.window.geometry("860x700")
         self.window.configure(bg=PALETTE_BG)
         self.window.protocol("WM_DELETE_WINDOW", self.exit_app)
@@ -654,7 +654,7 @@ class ResultViewer:
 
         self.btn_inpaint = tk.Button(
             header,
-            text="✨ Apply Inpainting",
+            text="Apply Inpainting",
             font=("Segoe UI", 9, "bold"),
             bg=PALETTE_PRIMARY,
             fg="white",
@@ -711,7 +711,7 @@ class ResultViewer:
             else "Inpainted & Binarized Output"
         )
         self.btn_inpaint.config(
-            text="✨ Apply Inpainting" if is_inpainted else "🔄 Show Raw Stitched"
+            text="Apply Inpainting" if is_inpainted else "Show Raw Stitched"
         )
         self.render_image(self.current_display_img)
 
